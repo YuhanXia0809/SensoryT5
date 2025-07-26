@@ -70,7 +70,6 @@ class SensoryT5Model(nn.Module):
 
     @staticmethod
     def mean_pool(hidden_states, mask):
-        # I mask pads and average the rest to get a sentence representation
         mask = mask.unsqueeze(-1).type_as(hidden_states)
         summed = (hidden_states * mask).sum(dim=1)
         count  = mask.sum(dim=1).clamp_min(1e-9)
@@ -85,11 +84,9 @@ class SensoryT5Model(nn.Module):
         last_hidden = t5_out.decoder_hidden_states[-1]  # [b, s, 1024]
         t5_k = self.t5.decoder.block[-1].layer[0].SelfAttention.k(last_hidden)
 
-        # Vectorized lookup: ids -> w2v ids -> w2v vectors
         w2v_idx = self.id2w2v[input_ids]       
         sens_vec = self.w2v_table(w2v_idx)      
 
-        # MultiheadAttention expects [seq, batch, dim]
         q = self.query_mapping(sens_vec).transpose(0, 1)  
         k = t5_k.transpose(0, 1)                           
         v = last_hidden.transpose(0, 1)                   
