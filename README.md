@@ -20,7 +20,6 @@ This implementation is associated with the following papers:
     publisher={Elsevier}
   }
   
-- 
 @inproceedings{xia2024sensoryt5,
   title={SensoryT5: Infusing Sensorimotor Norms into T5 for Enhanced Fine-grained Emotion Classification},
   author={Xia, Yuhan and Zhao, Qingqing and Long, Yunfei and Xu, Ge and Wang, Jia},
