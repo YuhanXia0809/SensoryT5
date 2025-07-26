@@ -59,7 +59,7 @@ class SensoryT5Model(nn.Module):
         super().__init__()
         self.t5 = T5Model.from_pretrained("t5-large")
 
-        # I freeze the external embedding and only look it up by index
+
         self.w2v_table = nn.Embedding.from_pretrained(w2v_weight, freeze=True)
         self.register_buffer("id2w2v", id2w2v_map)
 
