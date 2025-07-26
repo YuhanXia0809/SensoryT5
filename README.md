@@ -6,7 +6,7 @@ This repository contains core implementation code for SensoryT5.
 
 This implementation is associated with the following papers:
 
-- 
+- ```bibtex
 @article{zhao2025leveraging,
     title={Leveraging sensory knowledge into Text-to-Text Transfer Transformer for enhanced emotion analysis},
     author={Zhao, Qingqing and Xia, Yuhan and Long, Yunfei and Xu, Ge and Wang, Jia},
